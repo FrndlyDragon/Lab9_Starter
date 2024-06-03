@@ -69,8 +69,8 @@
     </form>
 
     <section id="error-btns">
-      <button>Console Log</button>
-      <button>Console Error</button>
+      <button onclick="consoleLog()">Console Log</button>
+      <button onclick="consoleError()">Console Error</button>
       <button>Console Count</button>
       <button>Console Warn</button>
       <button>Console Assert</button>
@@ -102,6 +102,13 @@
 
     // Start your code here
     // You may move this JS to another file if you wish
+    function consoleLog() {
+      console.log("Console Log Demo");
+    }
+
+    function consoleError() {
+      console.log("Console Error Demo");
+    }
   </script>
 </body>
 
