@@ -71,18 +71,18 @@
     <section id="error-btns">
       <button onclick="consoleLog()">Console Log</button>
       <button onclick="consoleError()">Console Error</button>
-      <button>Console Count</button>
-      <button>Console Warn</button>
-      <button>Console Assert</button>
-      <button>Console Clear</button>
-      <button>Console Dir</button>
-      <button>Console dirxml</button>
-      <button>Console Group Start</button>
-      <button>Console Group End</button>
-      <button>Console Table</button>
-      <button>Start Timer</button>
-      <button>End Timer</button>
-      <button>Console Trace</button>
+      <button onclick="consoleCount()">Console Count</button>
+      <button onclick="consoleWarn()">Console Warn</button>
+      <button onclick="consoleAssert()">Console Assert</button>
+      <button onclick="consoleClear()">Console Clear</button>
+      <button onclick="consoleDir(this)">Console Dir</button>
+      <button onclick="consoleDirXML(this)">Console dirxml</button>
+      <button onclick="consoleGroup()">Console Group Start</button>
+      <button onclick="consoleGroupEnd()">Console Group End</button>
+      <button onclick="consoleTable()">Console Table</button>
+      <button onclick="consoleTimeStart()">Start Timer</button>
+      <button onclick="consoleTimeEnd()">End Timer</button>
+      <button onclick="consoleTrace()">Console Trace</button>
       <button>Trigger a Global Error</button>
     </section>
   </main>
@@ -107,7 +107,57 @@
     }
 
     function consoleError() {
-      console.log("Console Error Demo");
+      console.error("Console Error Demo");
+    }
+
+    function consoleCount() {
+      console.count('Console Count Demo');
+      console.count('Console Count Demo');
+      console.count('Console Count Demo');
+    }
+
+    function consoleWarn() {
+      console.warn("Console Warn Demo");
+    }
+
+    function consoleAssert() {
+      console.assert(false, "Console Assert Demo");
+    }
+
+    function consoleClear() {
+      console.clear();
+    }
+
+    function consoleDir(clickObj) {
+      console.dir(clickObj);
+    }
+
+    function consoleDirXML(clickObj) {
+      console.dirxml(clickObj);
+    }
+
+    function consoleGroup() {
+      console.group();
+    }
+
+    function consoleGroupEnd() {
+      console.groupEnd();
+    }
+
+    function consoleTable() {
+      console.table(["Option 1", "Option 2", "Option 3"]);
+    }
+
+    function consoleTimeStart() {
+      console.time("Timer Demo");
+    }
+
+    function consoleTimeEnd() {
+      console.timeEnd("Timer Demo");
+    }
+
+    function consoleTrace() {
+      console.trace();
     }
   </script>
 </body>
