@@ -83,9 +83,18 @@
       <button onclick="consoleTimeStart()">Start Timer</button>
       <button onclick="consoleTimeEnd()">End Timer</button>
       <button onclick="consoleTrace()">Console Trace</button>
-      <button>Trigger a Global Error</button>
+      <button onclick="globalError()">Trigger a Global Error</button>
     </section>
   </main>
+
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  <script>
+    window.TrackJS && TrackJS.install({ 
+      token: "76d802163d9b444484b5a526f6eddbea"
+      // for more configuration options, see https://docs.trackjs.com
+    });
+  </script>
+                        
 
   <script>
     let form = document.querySelector('form');
@@ -99,7 +108,9 @@
     });
 
     let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
-
+    window.onerror = function () {
+      console.log("An error has been found");
+    }
     // Start your code here
     // You may move this JS to another file if you wish
     function consoleLog() {
@@ -158,6 +169,37 @@
 
     function consoleTrace() {
       console.trace();
+    }
+
+    function globalError() {
+      let badRef;
+      badReg.innerText = "This does nothing";
+    }
+
+    function createWelcome() {
+      let textArea = document.querySelector('textarea');
+      if (textArea == null) {
+        throw new MissingError("TextArea is missing. Must Add.");
+      }
+
+      textArea.innerText = "Welcome!";
+    }
+
+    class MissingError extends Error {
+      constructor(message) {
+        super(message);
+        this.name = "MissingError";
+      }
+    }
+
+    try {
+      createWelcome();
+    } catch (error) {
+      if (error instanceof MissingError) {
+        console.error(error);
+      }
+    } finally {
+      console.log("Attempted to create greeting");
     }
   </script>
 </body>
