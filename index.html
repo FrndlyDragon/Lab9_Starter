@@ -89,6 +89,10 @@
 
   <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
   <script>
+    window.addEventListener("error", function () {
+      console.log("An error has been found");
+    })
+    
     window.TrackJS && TrackJS.install({ 
       token: "76d802163d9b444484b5a526f6eddbea"
       // for more configuration options, see https://docs.trackjs.com
@@ -108,9 +112,6 @@
     });
 
     let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
-    window.onerror = function () {
-      console.log("An error has been found");
-    }
     // Start your code here
     // You may move this JS to another file if you wish
     function consoleLog() {
